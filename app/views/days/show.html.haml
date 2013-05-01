@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Date:
+  = @day.date
+%p
+  %b Name:
+  = @day.name
+%p
+  -#%b Content:
+  -#= @day.tasks[0].content
+
+= link_to 'Edit', edit_day_path(@day)
+\|
+= link_to 'Back', days_path
