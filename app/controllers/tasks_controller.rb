@@ -42,7 +42,10 @@ class TasksController < ApplicationController
   # GET /tasks/new.json
   def new
     @task = Task.new
-    @weekday=getdayweek
+    time=Time.new
+    tdate=time.month.to_s + "/" + time.day.to_s + "/" + time.year.to_s
+    @thisday=Day.find_by_date(tdate)
+    #@weekday=getdayweek
 
     respond_to do |format|
       format.html # new.html.erb
