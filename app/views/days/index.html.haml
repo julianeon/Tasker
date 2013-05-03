@@ -1,6 +1,6 @@
 %h1= "Days - #{@weekday}"
 
-%table
+%table.table.table-striped
   %tr
     %th Date
     %th Name
@@ -12,11 +12,10 @@
     %tr
       %td= day.date
       %td= day.name
-      %td= link_to 'Show', day
-      %td= link_to 'Edit', edit_day_path(day)
-      %td= link_to 'Destroy', day, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= link_to 'Show', day, class: 'btn btn-mini'
+      %td= link_to 'Edit', edit_day_path(day), class: 'btn btn-mini'
+      %td= link_to 'Destroy', day, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini'
 
 %br
 
-= link_to 'New Day', new_day_path
-= link_to 'Tasks', tasks_path
+= link_to 'New Day', new_day_path, class: 'btn'
