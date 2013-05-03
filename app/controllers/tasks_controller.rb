@@ -1,18 +1,14 @@
+require 'timex'
+
 class TasksController < ApplicationController
-  def getdayweek
-    daynum= Time.now.utc.wday
-    week={1=> "Monday", 2=> "Tuesday", 3=> "Wednesday", 4=> "Thursday", 5=> "Friday"}
-    dayofweek= week[daynum]
-  end
 
   # GET /tasks
   # GET /tasks.json
   def index
-    time=Time.new
-    @date=time.month.to_s + "/" + time.day.to_s + "/" + time.year.to_s
+    @date=Timex.date
     @tasks = Task.all
-    @weekday=getdayweek
-    dayofyear= Time.now.yday
+    @weekday=Timex.dayweek
+    dayofyear=Timex.dayyear
 
     @thisday=Day.where(date: @date).first
     if @thisday.nil?
@@ -45,7 +41,6 @@ class TasksController < ApplicationController
     time=Time.new
     tdate=time.month.to_s + "/" + time.day.to_s + "/" + time.year.to_s
     @thisday=Day.find_by_date(tdate)
-    #@weekday=getdayweek
 
     respond_to do |format|
       format.html # new.html.erb
@@ -55,20 +50,19 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    #@timenow=Time.now.to_i
-    @weekday=getdayweek
+    @weekday=Timex.dayweek
     @task = Task.find(params[:id])
   end
 
   # GET /tasks/1/start
   def start
-    @timenow=Time.now.to_i
+    @timenow=Timex.stopwatch
     @task = Task.find(params[:id])
   end
   # GET /tasks/1/start
 
   def stop
-    @timenow=Time.now.to_i
+    @timenow=Timex.stopwatch
     @task = Task.find(params[:id])
   end
 
