@@ -1,10 +1,11 @@
+require 'timex'
+
 class DaysController < ApplicationController
   # GET /days
   # GET /days.json
   def index
-    @days = Day.all
-    @test=Day.where(date: "2/12/13").first
-    #@day
+    @days = Day.all.reverse
+    @weekday = Timex.dayweek
 
     respond_to do |format|
       format.html # index.html.erb
