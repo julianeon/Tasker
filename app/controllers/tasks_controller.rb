@@ -17,10 +17,19 @@ class TasksController < ApplicationController
     end
     @thisday=Day.where(date: @date).first
 
+    @dayhash=Hash.new
+    days=Day.find(:all)
+    days.each do |x|
+      @dayhash[x.id]=x.date
+      if x.date==Timex.date then @dayhash[x.id]="today" end
+    end
+    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tasks }
     end
+
   end
 
   # GET /tasks/1
