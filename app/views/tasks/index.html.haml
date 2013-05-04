@@ -3,7 +3,7 @@
 %table.table.table-striped
   %tr
     %th Content
-    %th Day
+    %th Status
     %th
     %th
     %th
@@ -13,13 +13,23 @@
   - @tasks.each do |task|
     %tr
       %td= task.content
-      %td= @dayhash[task.day_id]
+      - if @dayhash[task.day_id] == "today"
+        - if task.start != nil && task.stop.nil?
+          %td underway 
+        - elsif task.start !=nil and task.stop !=nil
+          %td complete.
+        - else
+          %td= @dayhash[task.day_id]
+      - else
+        %td= @dayhash[task.day_id]
       %td= link_to 'Show', task, class: 'btn btn-mini'
       %td= link_to 'Edit', edit_task_path(task), class: 'btn btn-mini'
       %td= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini'
       %td= link_to 'Start', start_task_path(task), class: 'btn btn-mini'
       %td= link_to 'Stop', stop_task_path(task), class: 'btn btn-mini'
 
+%br
+%img{src: @taskfraction.to_url, alt: 'gc'}
 %br
 
 = link_to 'New Task', new_task_path, class: 'btn'
