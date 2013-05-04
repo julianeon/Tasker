@@ -27,20 +27,20 @@ class TasksController < ApplicationController
     
     @taskfraction=GoogleChart::PieChart.new('700x400', "Task Hours", false) do |pc|
     #t=Task.find(date: today).first
-    t=Day.find_by_date(Timex.date)
-    t.tasks.each do |x| 
-      unless x.start.nil? || x.stop.nil?
-        mins=x.stop-x.start
-        unless x.content=="Break"
-          color = "%06x" % (rand * 0xffffff)
-        else
-          color = '333333' 
+      t=Day.find_by_date(Timex.date)
+      t.tasks.each do |x| 
+        unless x.start.nil? || x.stop.nil?
+          mins=x.stop-x.start
+          unless x.content=="Break"
+            color = "%06x" % (rand * 0xffffff)
+          else
+            color = '333333' 
+          end
+          pc.data x.content, mins, color 
         end
-        pc.data x.content, mins, color 
-      end
-    end 
+      end 
     pc.show_labels = true
-  end
+    end
 
     respond_to do |format|
       format.html # index.html.erb
