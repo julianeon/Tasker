@@ -17,7 +17,7 @@
         - if task.start != nil && task.stop.nil?
           %td underway 
         - elsif task.start !=nil and task.stop !=nil
-          %td complete.
+          %td complete
         - else
           %td= @dayhash[task.day_id]
       - else
