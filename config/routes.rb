@@ -5,6 +5,7 @@ Tasker::Application.routes.draw do
 
   match 'tasks/:id/start' => 'tasks#start', :as => :start_task
   match 'tasks/:id/stop' => 'tasks#stop', :as => :stop_task
+  match 'tasks/today' => 'tasks#today', :as => :today
   #/tasks/:id/edit(.:format) tasks#edit
 
   # The priority is based upon order of creation:
@@ -56,7 +57,7 @@ Tasker::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'days#index'
+  root :to => 'tasks#index'
 
   # See how all your routes lay out with "rake routes"
 
