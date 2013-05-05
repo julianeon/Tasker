@@ -5,7 +5,7 @@ Tasker::Application.routes.draw do
 
   match 'tasks/:id/start' => 'tasks#start', :as => :start_task
   match 'tasks/:id/stop' => 'tasks#stop', :as => :stop_task
-  match 'tasks/today' => 'tasks#today', :as => :today
+  match 'today' => 'tasks#today', :as => :today
   #/tasks/:id/edit(.:format) tasks#edit
 
   # The priority is based upon order of creation:
