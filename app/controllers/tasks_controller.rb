@@ -53,9 +53,6 @@ class TasksController < ApplicationController
     @date=Timex.date
     @thisday = Day.find_by_date(@date)
     @weekday=@thisday.name
-    100.times do 
-      puts "#{@thisday.name}, #{@thisday.date}, #{@thisday.id}"
-    end
     @tasks=Task.where(:day_id => @thisday.id)
     if @tasks.nil? 
       @tasks=Task.last
