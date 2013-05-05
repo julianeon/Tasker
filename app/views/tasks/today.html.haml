@@ -1,0 +1,26 @@
+%h1= "#{@weekday}"
+
+%table.table.table-striped
+  %tr
+    %th Content
+    %th Status
+    %th
+    %th
+    %th
+    %th
+    %th
+
+  - @tasks.each do |task|
+    %tr
+      %td= task.content
+      - if task.start != nil && task.stop.nil?
+        %td underway 
+      - elsif task.start !=nil and task.stop !=nil
+        %td complete
+      - else
+        %td unstarted 
+      %td= link_to 'Start', start_task_path(task), class: 'btn btn-mini'
+      %td= link_to 'Stop', stop_task_path(task), class: 'btn btn-mini'
+
+= link_to 'New Task', new_task_path, class: 'btn'
+
