@@ -14,7 +14,7 @@
     %tr
       %td= task.content
       - if task.start != nil && task.stop.nil?
-        %td underway 
+        %td doing 
       - elsif task.start !=nil and task.stop !=nil
         %td complete
       - else
