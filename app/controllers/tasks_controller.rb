@@ -49,6 +49,24 @@ class TasksController < ApplicationController
 
   end
 
+  def today
+    @date=Timex.date
+    @thisday = Day.find_by_date(@date)
+    @weekday=@thisday.name
+    100.times do 
+      puts "#{@thisday.name}, #{@thisday.date}, #{@thisday.id}"
+    end
+    @tasks=Task.where(:day_id => @thisday.id)
+    if @tasks.nil? 
+      @tasks=Task.last
+    end
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @task }
+    end
+  end
+
   # GET /tasks/1
   # GET /tasks/1.json
   def show
