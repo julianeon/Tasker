@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 
 gem 'therubyracer'
+gem 'twitter-bootstrap-rails'
 gem 'less-rails-bootstrap'
 
 # Bundle edge Rails instead:
@@ -11,7 +12,6 @@ gem 'less-rails-bootstrap'
 #gem 'sqlite3'
 gem 'pg'
 
-#gem 'twitter-bootstrap-rails'
 gem 'haml-rails'
 
 # Gems used only for assets and not required
