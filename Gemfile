@@ -8,7 +8,8 @@ gem 'less-rails-bootstrap'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+#gem 'sqlite3'
+gem 'pg'
 
 #gem 'twitter-bootstrap-rails'
 gem 'haml-rails'
