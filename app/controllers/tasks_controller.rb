@@ -73,7 +73,6 @@ class TasksController < ApplicationController
     end
 
     respond_to do |format|
-    respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @task }
     end
