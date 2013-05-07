@@ -93,8 +93,7 @@ class TasksController < ApplicationController
   # GET /tasks/new.json
   def new
     @task = Task.new
-    time=Time.new
-    tdate=time.month.to_s + "/" + time.day.to_s + "/" + time.year.to_s
+    tdate=Timex.date
     @thisday=Day.find_by_date(tdate)
 
     respond_to do |format|
